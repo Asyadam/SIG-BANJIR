@@ -70,8 +70,8 @@ html, body {
 }
         #toggleMarkers {
     position: absolute;
-    top: 148px;
-    right: 40px;
+    top: 133px;
+    left: 210px;
     z-index: 1000;
     padding: 10px;
     border-radius: 5px;
@@ -112,25 +112,70 @@ html, body {
         }
 
 
+        .sidebar {
+        height: 40%;
+        width: 290px;
+        position: fixed;
+        top: 50%;
+        bottom: 500px; /* Atur margin bawah sesuai kebutuhan Anda */
+        left: 10px; /* Atur margin kiri sesuai kebutuhan Anda */
+        background-color: #fff;
+        overflow-y: auto !important;
+        padding: 15px;
+        display: block !important;
+        z-index: 950 !important;
+        transform: translateY(-50%);
+        border-radius: 0; /* Menghilangkan sudut runcing */
+    }
+
+    /* Gaya untuk konten di dalam sidebar */
+    .sidebar-content {
+        margin-bottom: 50px;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .legend-color {
+        background-color: #98DAF1;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        border: 1px solid #FFA500;
+    }
+
+    .legend-text {
+        font-size: 16px;
+    }
+
+    .form-check {
+        margin-left: auto;
+    }
+
+    .vr {
+        border-left: 1px solid #FFA500;
+        height: 40px;
+        margin: 0 10px;
+    }
+
+    .form-check-input:checked {
+            background-color: green !important;
+        }
+
+    
     </style>
 </head>
 <body>
-//map
 <div id="map"></div> 
-<!-- Tombol untuk kedalaman -->
-<div class="kedalaman-buttons">
-        <button class="kedalamanButton" data-kedalaman="< 1 m">Kedalaman < 1 m</button>
-        <button class="kedalamanButton" data-kedalaman="1 - 2 m">Kedalaman 1 - 2 m</button>
-        <button class="kedalamanButton" data-kedalaman="2 - 3 m">Kedalaman 2 - 3 m</button>
-        <button class="kedalamanButton" data-kedalaman="3 - 5 m">Kedalaman 3 - 5 m</button>
-        <button class="kedalamanButton" data-kedalaman="> 5 m">Kedalaman > 5 m</button>
-    </div>
+
 //fluktuasi
-<button class="btn btn-warning text-white button-with-border"
+<button class="btn btn-warning text-white button"
         type="button"
         data-bs-toggle="modal"
         data-bs-target="#customModal"
-        style="position: absolute; top: 50px; right: 40px; z-index: 1000;">Fluktuasi <i class="fa-solid fa-chart-simple" style="color: #198754;"></i>
+        style="position: absolute; top: 133px; left: 5px; z-index: 1000;">Fluktuasi <i class="fa-solid fa-chart-simple" style="color: #198754;"></i>
 </button>
 <!-- Modal -->
 <div class="modal fade" id="customModal" tabindex="-1" role="dialog" aria-labelledby="customModalLabel" aria-hidden="true">
@@ -196,7 +241,7 @@ html, body {
     </div>
 </div>
 //kerawanan
-<div id="toggleKerawanan" style="position: absolute; top: 100px; right: 40px; z-index: 1000;">
+<div id="toggleKerawanan" style="position: absolute; top: 133px; left: 130px; z-index: 1000;">
     <button id="toggleKerawananButton" class="btn btn-success" type="button" style="font-size: 14px; padding: 7px 10px;">
         <i class="fa-solid fa-map" style="color: #ffa200;"></i>
         <span id="kerawananStatusText">Aktif</span>
@@ -209,6 +254,78 @@ html, body {
         <span id="markerStatusText">Aktif</span>
     </button>
 </div>
+
+<div class="sidebar" style="border: 3px solid #FFA500; border-radius: 10px;">
+
+    <div class="sidebar-content">
+        <h2 style="color: #006200; text-align: center;">LEGENDA</h2>
+     
+        <div class="legend-item" style="padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #FFA500;">
+            <span class="legend-color"></span>
+            <span class="legend-text" data-kedalaman="< 1 m">Kedalaman &lt; 1 m</span>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="kedalamanButton1" data-kedalaman="< 1 m" checked>
+                <label class="form-check-label" for="kedalamanButton1"></label>
+            </div>
+        </div>
+
+        <div class="legend-item" style="padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #FFA500;">
+            <span class="legend-color" style="background-color: #8F97E2;"></span>
+            <span class="legend-text" data-kedalaman="1 - 2 m">Kedalaman 1 - 2 m</span>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="kedalamanButton2" data-kedalaman="1 - 2 m" checked>
+                <label class="form-check-label" for="kedalamanButton2"></label>
+            </div>
+        </div>
+
+        <div class="legend-item" style="padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #FFA500;">
+            <span class="legend-color" style="background-color: #556CC9;"></span>
+            <span class="legend-text" data-kedalaman="2 - 3 m">Kedalaman 2 - 3 m</span>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="kedalamanButton3" data-kedalaman="2 - 3 m" checked>
+                <label class="form-check-label" for="kedalamanButton3"></label>
+            </div>
+        </div>
+
+        <div class="legend-item" style="padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #FFA500;">
+            <span class="legend-color" style="background-color: #234EAD;"></span>
+            <span class="legend-text" data-kedalaman="3 - 5 m">Kedalaman 3 - 5 m</span>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="kedalamanButton4" data-kedalaman="3 - 5 m" checked>
+                <label class="form-check-label" for="kedalamanButton4"></label>
+            </div>
+        </div>
+
+        <div class="legend-item" style="padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #FFA500;">
+            <span class="legend-color" style="background-color: #003895;"></span>
+            <span class="legend-text" data-kedalaman="> 5 m">Kedalaman &gt; 5 m</span>
+     
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="kedalamanButton5" data-kedalaman="> 5 m" checked>
+                <label class="form-check-label" for="kedalamanButton5"></label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
 var southWest = L.latLng(-4.0, 102.0); // Koordinat sudut barat daya batasan
@@ -385,7 +502,6 @@ document.getElementById('toggleKerawananButton').addEventListener('click', funct
 //tahun
 {
 
-
     var borderLayer = null;
 var geoJsonLayer = L.geoJSON().addTo(map); // Inisialisasi GeoJSON Layer
 var activeYear = '2'; // Default year is '2'
@@ -527,6 +643,7 @@ for (var i = 0; i < yearButtons.length; i++) {
 
         // Mengaktifkan atau menonaktifkan tombol kedalaman sesuai dengan tahun yang dipilih
         enableKedalamanButtonsForYear(activeYear);
+        
     });
 }
 
@@ -537,36 +654,42 @@ enableKedalamanButtonsForYear(activeYear);
 // Objek untuk melacak status polygon yang dihapus
 var removedPolygons = {};
 
-// Tangani klik tombol kedalaman
-var kedalamanButtons = document.getElementsByClassName('kedalamanButton');
-for (var i = 0; i < kedalamanButtons.length; i++) {
-    kedalamanButtons[i].addEventListener('click', function () {
-        // Dapatkan data-kedalaman dari tombol yang ditekan
-        var selectedKedalaman = this.getAttribute('data-kedalaman');
+// Fungsi untuk mengaktifkan atau menonaktifkan tombol kedalaman sesuai dengan tahun yang dipilih
+function enableKedalamanButtonsForYear(year) {
+    var kedalamanButtons = document.getElementsByClassName('form-check-input');
 
-        // Periksa apakah tombol kedalaman telah dihapus
-        if (removedPolygons[selectedKedalaman]) {
-            // Jika iya, aktifkan kembali polygon dengan kedalaman yang dipilih
-            activatePolygonByKedalaman(selectedKedalaman);
-
-            // Hapus status penghapusan
-            delete removedPolygons[selectedKedalaman];
-
-            // Ubah warna tombol kedalaman menjadi hijau
-            this.style.backgroundColor = '#198754';
+    // Loop melalui semua checkbox kedalaman
+    for (var i = 0; i < kedalamanButtons.length; i++) {
+        if (year === 'semua' || year === activeYear) {
+            // Aktifkan checkbox
+            kedalamanButtons[i].disabled = false;
+            kedalamanButtons[i].checked = true; // Set checkbox ke status tercentang
         } else {
-            // Jika tidak, hapus polygon dengan kedalaman yang dipilih
-            removePolygonByKedalaman(selectedKedalaman);
-
-            // Tambahkan status penghapusan
-            removedPolygons[selectedKedalaman] = true;
-
-            // Ubah warna tombol kedalaman menjadi merah
-            this.style.backgroundColor = '#DC3545ed';
+            // Nonaktifkan checkbox
+            kedalamanButtons[i].disabled = true;
+            kedalamanButtons[i].checked = false; // Set checkbox ke status tidak tercentang
         }
-    });
+    }
 }
 
+// Fungsi yang dipanggil saat checkbox berubah status
+function handleCheckboxChange(checkbox) {
+    var selectedKedalaman = checkbox.getAttribute('data-kedalaman');
+
+    if (checkbox.checked) {
+        activatePolygonByKedalaman(selectedKedalaman);
+    } else {
+        removePolygonByKedalaman(selectedKedalaman);
+    }
+}
+
+// Ambil semua checkbox
+var checkboxes = document.querySelectorAll('.form-check-input');
+checkboxes.forEach(function (checkbox) {
+    checkbox.addEventListener('change', function () {
+        handleCheckboxChange(this);
+    });
+});
 
 // Fungsi untuk menghapus polygon berdasarkan kedalaman
 function removePolygonByKedalaman(selectedKedalaman) {
@@ -575,7 +698,7 @@ function removePolygonByKedalaman(selectedKedalaman) {
         // Cek apakah kedalaman fitur sama dengan yang dipilih oleh pengguna
         if (kedalaman === selectedKedalaman) {
             // Hilangkan layer yang sesuai
-            map.removeLayer(layer); // Menggunakan map.removeLayer(layer) alih-alih geoJsonLayer.removeLayer(layer)
+            map.removeLayer(layer);
         }
     });
 }
@@ -589,36 +712,11 @@ function activatePolygonByKedalaman(selectedKedalaman) {
             // Periksa apakah layer sudah ada di peta sebelum menambahkannya
             if (!map.hasLayer(layer)) {
                 // Tambahkan layer yang sesuai kembali ke peta
-                map.addLayer(layer); // Menggunakan map.addLayer(layer) alih-alih geoJsonLayer.addLayer(layer)
+                map.addLayer(layer);
             }
         }
     });
 }
-
-// Fungsi untuk mengaktifkan atau menonaktifkan tombol kedalaman sesuai dengan tahun yang dipilih
-function enableKedalamanButtonsForYear(year) {
-    var kedalamanButtons = document.getElementsByClassName('kedalamanButton');
-    
-    // Loop melalui semua tombol kedalaman
-    for (var i = 0; i < kedalamanButtons.length; i++) {
-        var kedalaman = kedalamanButtons[i].getAttribute('data-kedalaman');
-        
-        // Cek apakah tombol kedalaman harus diaktifkan atau dinonaktifkan berdasarkan tahun
-        if (year === 'semua' || year === activeYear) {
-            kedalamanButtons[i].disabled = false;
-            kedalamanButtons[i].style.backgroundColor = '#198754';
-        } else {
-            kedalamanButtons[i].disabled = true;
-            kedalamanButtons[i].style.backgroundColor = 'gray'; // Atur warna latar belakang ke abu-abu atau warna lain yang sesuai dengan kebijakan UI Anda
-        }
-    }
-}
-
-
-
-
-
-
 
 
 }
@@ -703,25 +801,25 @@ function enableKedalamanButtonsForYear(year) {
     function updateChart(totalLuasWilayah, label, chartId, keterangan) {
         let datasetData;
         let backgroundColor;
-
+        let borderColor;
         if (chartId === 'chart_total_luas_kedalaman_1m') {
             datasetData = datasetData1M;
-            backgroundColor = '#98DAF1';
+            backgroundColor = '#98DAF180';
         } else if (chartId === 'chart_total_luas_kedalaman_1_2m') {
             datasetData = datasetData1_2M;
-            backgroundColor = '#8F97E2';
+            backgroundColor = '#8F97E280';
         } else if (chartId === 'chart_total_luas_kedalaman_2_3m') {
             datasetData = datasetData2_3M;
-            backgroundColor = '#556CC9';
+            backgroundColor = '#556CC980';
         } else if (chartId === 'chart_total_luas_kedalaman_3_5m') {
             datasetData = datasetData3_5M;
-            backgroundColor = '#234EAD';
+            backgroundColor = '#234EAD80';
         } else if (chartId === 'chart_total_luas_kedalaman_5m') {
             datasetData = datasetData5M;
-            backgroundColor = '#003895';
+            backgroundColor = '#00389580';
         } else if (chartId === 'chart_total_luas_kedalaman_seluruh') {
             datasetData = datasetDataSeluruh;
-            backgroundColor = '#FF5733'; // Ganti dengan warna sesuai kebutuhan
+            backgroundColor = '#FF573380'; // Ganti dengan warna sesuai kebutuhan
         }
         // Cek apakah label sudah ada di daftar labels
         const labelIndex = initialLabels.indexOf(label);
@@ -735,19 +833,28 @@ function enableKedalamanButtonsForYear(year) {
         }
         var ctx = document.getElementById(chartId).getContext('2d');
         new Chart(ctx, {
-            type: 'bar', // Jenis grafik
-            data: {
-                labels: initialLabels, // Label X-axis
-                datasets: [{
-                    label: `Total Luas Wilayah ${keterangan} (Ha)`, // Label untuk dataset
-                    data: datasetData, // Data grafik (total Luas Wilayah)
-                    backgroundColor: backgroundColor, // Ganti dengan warna sesuai kebutuhan
-                    borderWidth: 1
-                }]
-            },
-            options: {
+    type: 'line', // Jenis grafik
+    data: {
+        labels: initialLabels, // Label X-axis
+        datasets: [{
+            label: `Total Luas Wilayah ${keterangan} (Ha)`, // Label untuk dataset
+            data: datasetData, // Data grafik (total Luas Wilayah)
+            backgroundColor:backgroundColor, // Warna area di bawah garis dengan alpha 0.5
+            borderColor: backgroundColor, // Warna garis
+            borderWidth: 1,
+            fill: true, // Mengisi area di bawah garis
+        }]
+    },
+    options: {
+        plugins: {
+            filler: {
+                propagate: true
             }
-        });
+        }
+    }
+});
+
+
     }
     // Panggil fungsi dengan berkas GeoJSON yang sesuai dan label yang sesuai untuk masing-masing tahun dan kedalaman
     hitungTotalLuasWilayah('geojson/2tahun.geojson', "< 1 m", '2 Tahun', 'chart_total_luas_kedalaman_1m', '< 1M');
@@ -792,7 +899,13 @@ hitungTotalLuasWilayah1('geojson/25tahun.geojson', "", '25 Tahun', 'chart_total_
 hitungTotalLuasWilayah1('geojson/50tahun.geojson', "", '50 Tahun', 'chart_total_luas_kedalaman_seluruh', 'Seluruh');
 hitungTotalLuasWilayah1('geojson/100tahun.geojson', "", '100 Tahun', 'chart_total_luas_kedalaman_seluruh', 'Seluruh');
 }
+updateGeoJsonLayer(activeYear);
 kerawananLayer.addTo(map).bringToBack();
+
+
+
+
+
 </script>
 </body>
 </html>
